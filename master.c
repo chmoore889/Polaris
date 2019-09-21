@@ -24,6 +24,9 @@ int main()
 		{
 			printf("Button Pressed\n");
 
+			//Audio recording
+			system("sudo arecord -D plughw:1,0 -f cd -d 7 result.wav");
+
 //			digitalWrite(29,HIGH);
 
 			int error = system("python startup.py");
