@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SmartCane Prototype</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=K2558c5j"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta16/shoelace.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        function start() {
+            responsiveVoice.speak('Welcome to SmartCane. Where would you like to go today?', "US English Male");
+            document.getElementById("audio_output_text").innerHTML = " <br /> Welcome to SmartCane. Where would you like to go today?";
+        } 
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>SmartCane</h1>
+        <p class="page-description">A safe navigation technology for the visually impaired.</p>
+
+        <h3 class="no-browser-support">Sorry, Your Browser Doesn't Support the Web Speech API. Try Opening This Demo In Google Chrome.</h3>
+
+        <div class="app">
+            <button id="save-note-btn" title="Save Note" onclick="start()"> Physical ON Button </button>
+            <br />
+            <h3 id="audio_output_text" style="font-size: 1em;"> </h3>
+            <div class="input-single">
+                <textarea id="note-textarea" placeholder="You're off to..." rows="6"></textarea>
+            </div>
+            <input type = "submit" id="start-record-btn" title="Start Recording" value = "Start Input">
+            <input type = "submit" id="pause-record-btn" title="Pause Recording" value = "Pause Input">
+            <input type = "submit" id="submit" title="Submit" onclick = "submitAdd()" value = "Submit">
+            <p id="current-location"> Current location is  <strong> 
+<script>
+navigator.geolocation.getCurrentPosititon(showPosition); 
+function showPosition(position) {
+document.write(position.coords.latitude + "Latitude and " + position.coords.longitude +  "Longitude"); 
+} 
+</script> 
+</strong> </p> 
+
+        </div>
+
+    </div>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+   <script> 
+      function submitAdd() { 
+                        document.getElementById("audio_output_text").innerHTML = noteContent;  
+                        $.post("http://34.68.204.92:5000/", {"audio_input": noteContent}); 
+       }
+   </script>
+</body>
+
+</html>
