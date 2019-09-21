@@ -24,7 +24,12 @@ int main()
 		if(buttonState == 1)
 		{
 			printf("Button Pressed\n");
-
+			
+			if( access( "result.wav", F_OK ) != -1 ) {
+			    	system("rm result.wav");
+				system("rm momo_result.wav");
+			}
+			
 			//Audio recording
 			system("nohup sudo arecord -D plughw:1,0 -f cd -d 7 result.wav &");
 			system("ffmpeg -i result.wav -ac 1 mono_result.wav");		
