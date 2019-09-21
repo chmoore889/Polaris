@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 
 # Copyright 2016 Google Inc. All Rights Reserved.
 #
@@ -35,8 +34,8 @@ def run_quickstart():
     # The name of the audio file to transcribe
     file_name = os.path.join(
         os.path.dirname(__file__),
-        'resources',
-        'audio.raw')
+        '.',
+        'mono_result.wav')
 
     # Loads the audio into memory
     with io.open(file_name, 'rb') as audio_file:
@@ -44,17 +43,23 @@ def run_quickstart():
         audio = types.RecognitionAudio(content=content)
 
     config = types.RecognitionConfig(
-        encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
-        sample_rate_hertz=16000,
+        #encoding=enums.RecognitionConfig.AudioEncoding.LINEAR16,
+        #sample_rate_hertz=16000,
         language_code='en-US')
 
     # Detects speech in the audio file
     response = client.recognize(config, audio)
 
     for result in response.results:
-        print('Transcript: {}'.format(result.alternatives[0].transcript))
+        collectedData = ' {}'.format(result.alternatives[0].transcript) 
+        print("Transcript " + collectedData) 
+        f = open("addressFile.txt", "w") 
+        f.write(collectedData) 
+        f.close() 
+
     # [END speech_quickstart]
 
 
 if __name__ == '__main__':
     run_quickstart()
+

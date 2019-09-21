@@ -1,3 +1,4 @@
+
 #include <wiringPi.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -26,7 +27,7 @@ int main()
 
 			//Audio recording
 			system("nohup sudo arecord -D plughw:1,0 -f cd -d 7 result.wav &");
-
+			system("ffmpeg -i result.wav -ac 1 mono_result.wav");		
 //			digitalWrite(29,HIGH);
 
 			int error = system("python startup.py");
