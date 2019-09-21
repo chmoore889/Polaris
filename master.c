@@ -26,13 +26,13 @@ int main()
 			printf("Button Pressed\n");
 			
 			if( access( "result.wav", F_OK ) != -1 ) {
-			    	system("sudo rm result.wav");
-				system("sudo rm momo_result.wav");
+			    	system("nohup sudo rm result.wav &");
+				system("nohup sudo rm momo_result.wav &");
 			}
 			
 			//Audio recording
 			system("nohup sudo arecord -D plughw:1,0 -f cd -d 7 result.wav &");
-			system("ffmpeg -i result.wav -ac 1 mono_result.wav");		
+			system("nohup ffmpeg -i result.wav -ac 1 mono_result.wav &");		
 //			digitalWrite(29,HIGH);
 
 			int error = system("python startup.py");
