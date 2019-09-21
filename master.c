@@ -26,8 +26,8 @@ int main()
 			printf("Button Pressed\n");
 			
 			if( access( "result.wav", F_OK ) != -1 ) {
-			    	system("rm result.wav");
-				system("rm momo_result.wav");
+			    	system("sudo rm result.wav");
+				system("sudo rm momo_result.wav");
 			}
 			
 			//Audio recording
