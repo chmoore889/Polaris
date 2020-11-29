@@ -1,5 +1,7 @@
 # Polaris: A Smart Cane
 ## Won *Best Health Hack* at SBUHacks 2019
+### Team Members: Elyas Masrour, Chris Moore, Abdullah Nauman, and Rohan Nagavardhan
+
 A novel smart accessory to help the visually impaired navigate to any given destination. 
 
 Many blind people can still live normally with their disability. They have jobs, friends, and places to be. Like the rest of us, in order to get to where they need to be, they need navigation. However, often times, people with disabilities are simply an afterthought in phone and software design. Not anymore. We wanted to create a device that is designed primarily with the visually impaired in mind.
